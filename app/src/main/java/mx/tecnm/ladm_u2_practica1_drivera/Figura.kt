@@ -1,5 +1,6 @@
 package mx.tecnm.ladm_u2_practica1_drivera
 
+import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.PaintFlagsDrawFilter
@@ -9,9 +10,12 @@ class Figura () {
 
     var x = 0f
     var y = 0f
+
     var radio = 0f
     var ancho = 0f
     var alto = 0f
+
+    var bitmap : Bitmap? = null
 
     var tipo = 1
 
@@ -33,11 +37,22 @@ class Figura () {
         this.y = y.toFloat()
         this.ancho = ancho.toFloat()
         this.alto = alto.toFloat()
-
         tipo = 2
 
     }//constructor
 
+
+    //imagen
+    constructor(x: Int, y:Int, imagen:Bitmap) : this(){
+
+        bitmap = imagen
+        this.x = x.toFloat()
+        this.y = y.toFloat()
+        ancho = bitmap!!.width.toFloat()
+        alto = bitmap!!.height.toFloat()
+        tipo = 3
+
+    }//imagen
 
     fun pintar(c:Canvas, p:Paint ){
 
@@ -49,6 +64,11 @@ class Figura () {
             2->{
                 c.drawRect(x, y, x+ancho, y+alto, p)
             }//2-rectangulo
+
+            3->{
+                c.drawBitmap(bitmap!!,x,y,p)
+            }//imagen
+
         }//when
 
     }//pintar
