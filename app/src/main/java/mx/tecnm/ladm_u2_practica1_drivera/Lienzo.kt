@@ -2,13 +2,21 @@ package mx.tecnm.ladm_u2_practica1_drivera
 
 import android.graphics.*
 import android.view.View
+import java.util.*
 
 class Lienzo (p:MainActivity) : View(p) {
 
     var puntero = p
 
+    var r = Random()
+    var tmpX = r.nextInt(900-100);
+    var tmpY = r.nextInt(900-100);
+
+
+
     //luna
     var luna = Figura(500,60,40)
+    var lunaTmp = Figura(tmpX, tmpY,100)
 
 
     //arboles
@@ -109,6 +117,9 @@ class Lienzo (p:MainActivity) : View(p) {
         //luna
         paint.color = Color.DKGRAY
         luna.pintar(canvas, paint)
+
+        paint.color = Color.RED
+        lunaTmp.pintar(canvas, paint)
 
 
         //nube
