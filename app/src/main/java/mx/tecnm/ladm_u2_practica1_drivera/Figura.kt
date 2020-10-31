@@ -5,11 +5,13 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.PaintFlagsDrawFilter
 import android.provider.MediaStore
+import java.util.*
 
 class Figura () {
 
     var x = 0f
     var y = 0f
+    var decX = 5f
 
     var radio = 0f
     var ancho = 0f
@@ -54,6 +56,16 @@ class Figura () {
 
     }//imagen
 
+
+    fun coordRandom(){
+
+        var r = Random()
+        this.x = r.nextInt(900-100).toFloat()
+        this.y = r.nextInt(900-100).toFloat()
+
+    }//pasos
+
+
     fun pintar(c:Canvas, p:Paint ){
 
         when(tipo){
@@ -72,5 +84,9 @@ class Figura () {
         }//when
 
     }//pintar
+
+
+
+
 
 }//Figura

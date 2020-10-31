@@ -6,17 +6,8 @@ import java.util.*
 
 class Lienzo (p:MainActivity) : View(p) {
 
-    var puntero = p
-
-    var r = Random()
-    var tmpX = r.nextInt(900-100);
-    var tmpY = r.nextInt(900-100);
-
-
-
     //luna
     var luna = Figura(500,60,40)
-    var lunaTmp = Figura(tmpX, tmpY,100)
 
 
     //arboles
@@ -74,6 +65,8 @@ class Lienzo (p:MainActivity) : View(p) {
     var tumba4 = Figura(400,950,BitmapFactory.decodeResource(resources,R.drawable.tumbaconfondo))
     var tumba5 = Figura(300,1150,BitmapFactory.decodeResource(resources,R.drawable.tumbaconfondo))
 
+    var calaverita = Figura(-1000, -1000, BitmapFactory.decodeResource(resources, R.drawable.calaveracatrina) )
+    var catrinaFondo = Figura(-1000, -1000, BitmapFactory.decodeResource(resources, R.drawable.calaverita))
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
@@ -114,12 +107,10 @@ class Lienzo (p:MainActivity) : View(p) {
         copaArb2.pintar(canvas,paint)
         copaArb3.pintar(canvas,paint)
 
+
         //luna
         paint.color = Color.DKGRAY
         luna.pintar(canvas, paint)
-
-        paint.color = Color.RED
-        lunaTmp.pintar(canvas, paint)
 
 
         //nube
@@ -148,6 +139,21 @@ class Lienzo (p:MainActivity) : View(p) {
         tumba4.pintar(canvas, paint)
         tumba5.pintar(canvas, paint)
 
+
+        //calaveritas
+        calaverita.pintar(canvas, paint)
+        catrinaFondo.pintar(canvas, paint)
+
     }//onDraw
+
+
+    fun redibujar(){
+
+        calaverita.coordRandom()
+        catrinaFondo.coordRandom()
+        invalidate()
+
+    }//redibujar
+
 
 }//Lienzo
