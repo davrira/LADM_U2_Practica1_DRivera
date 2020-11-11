@@ -7,7 +7,7 @@ class Hilo (p:MainActivity) : Thread() {
     override fun run() {
         super.run()
 
-        sleep(5000)
+        sleep(2000)
 
         while (true){
 
